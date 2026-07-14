@@ -235,6 +235,9 @@ function update(elapsed:Float) {
 		persistentUpdate = false;
 		openSubState(new ModSubState('shared/GameplayChangersSubstate'));
 	}
+	if (FlxG.keys.justPressed.J){
+		FlxG.switchState(new ModState('FAN/extra-side/freeplayState'));
+	}
 	time += elapsed;
 	chrom.data.rOffset.value = [chromeOffset*Math.sin(time)];
 	chrom.data.bOffset.value = [-chromeOffset*Math.sin(time)];
@@ -252,7 +255,6 @@ function update(elapsed:Float) {
 	}
 	for (i in 0...grpSongs.length)
 		iconArray[i].setPosition(grpSongs.members[i].x+grpSongs.members[i].width+10,grpSongs.members[i].y-30);
-	if(Framerate.debugMode>1) Framerate.debugMode=0;
 }
 function changeDiff(change:Int = 0) {
 	curDifficulty = FlxMath.wrap(curDifficulty + change, 0, songs[curSelected_FP].difficulties.length-1);
@@ -261,6 +263,15 @@ function changeDiff(change:Int = 0) {
 	intendedRating = FunkinSave.getSongHighscore(songs[curSelected_FP].name, songs[curSelected_FP].difficulties[curDifficulty]).accuracy;
 
 	diffText.text = '< ' + songs[curSelected_FP].difficulties[curDifficulty].toUpperCase() + ' >';
+	diffText.color = switch(diffText.text) {
+		case '< COOL >':0xF00020;
+		case '< STAINED >':0x347FF1;
+		default: 0xFFFFFFFF;		
+	}
+	fanmade_text.color = switch(diffText.text) {
+		case '< STAINED >':0x347FF1;
+		default: 0xffee00;		
+	}
 	positionHighscore();
 }
 
@@ -272,15 +283,6 @@ function shadering(REAL:Int,?string:String=""){
 		default:FlxG.camera.removeShader(grey);camText.removeShader(grey);
 			glitch.on = 0;
     }
-	diffText.color = switch(diffText.text) {
-		case '< COOL >':0xF00020;
-		case 'STAINED'|'FANMADE-D':0x347FF1;
-		default: 0xFFFFFFFF;		
-	}
-	fanmade_text.color = switch(diffText.text) {
-		case 'STAINED':0x347FF1;
-		default: 0xffee00;		
-	}
 	if(string=="hand"){
 		if(Assets.exists(Paths.image('menus/FP/ports/'+cursong.displayName+'-over')))
 		portraitOverlay.loadGraphic(Paths.image('menus/FP/ports/'+cursong.displayName+'-over'));
@@ -291,20 +293,23 @@ function shadering(REAL:Int,?string:String=""){
 	}
 
 	if(cursong.normalport){
-	FlxTween.tween(bar, {angle:0,x:490}, 0.4, {ease: FlxEase.quintIn});
+	FlxTween.tween(fanmade_text, {angle:-1,x:540,y:0}, 0.2, {ease: FlxEase.quintIn});
+	FlxTween.tween(bar, {angle:0,x:490}, 0.2, {ease: FlxEase.quintIn});
 	FlxTween.tween(portrait, {x:0,angle:0}, 0.4, {ease: FlxEase.quintIn});
 	}
-	else if(FlxG.save.data.freeplaything==4){
-	FlxTween.tween(bar, {angle:30,x:400}, 0.4, {ease: FlxEase.quintIn});
-	FlxTween.tween(portrait, {angle:5,x:600}, 0.6, {ease: FlxEase.quintIn});
+	else if(!cursong.normalport){
+	FlxTween.tween(fanmade_text, {angle:4,x:580,y:650}, 0.2, {ease: FlxEase.quintIn});
+	FlxTween.tween(bar, {angle:30,x:400}, 0.2, {ease: FlxEase.quintIn});
+	FlxTween.tween(portrait, {angle:5,x:600}, 0.2, {ease: FlxEase.quintIn});
 	}
 }
 
 function changeSelection(change:Int = 0, playSound:Bool = true) {
+	playSound??=true;
 	if (playSound) FlxG.sound.play(Paths.sound('scrollMenu'), 0.4);
 	curSelected_FP = FlxMath.wrap(curSelected_FP + change, 0, songs.length-1);
 	curSelectReal[FlxG.save.data.freeplaything]=curSelected_FP;
-	fanmade_text.text=songs[curSelectReal].version;
+	fanmade_text.text=songs[curSelected_FP].version;
 
 	var bullShit:Int = 0;
 
@@ -319,7 +324,7 @@ function changeSelection(change:Int = 0, playSound:Bool = true) {
 	iconArray[curSelected_FP].alpha = 1;
 	shadering(curSelected_FP);
 
-	if(FlxG.save.data.freeplaything==4){
+	if(!songs[curSelected_FP].normalport){
 	FlxTween.tween(portrait, {y: portrait.y + 300}, 0.2, {ease: FlxEase.quintIn, onComplete: function(twn:FlxTween) {
 		portrait.loadGraphic(preload[curSelected_FP]);
 		shadering(curSelected_FP,"hand");
@@ -329,7 +334,7 @@ function changeSelection(change:Int = 0, playSound:Bool = true) {
 		FlxTween.tween(portrait, {y: mfwY2}, 0.4, {ease: FlxEase.elasticOut});
 	}});
 	}
-	if(FlxG.save.data.freeplaything!=3||songs[curSelected_FP].normalport){
+	if(songs[curSelected_FP].normalport){
 	FlxTween.tween(portrait, {y: portrait.y + 45, angle: 5}, 0.2, {ease: FlxEase.quintIn, onComplete: function(twn:FlxTween) {
 		portrait.loadGraphic(preload[curSelected_FP]);
 		shadering(curSelected_FP,"hand");
@@ -347,9 +352,6 @@ function changeSelection(change:Int = 0, playSound:Bool = true) {
 		FlxTween.cancelTweensOf(bg,['color']);
 		FlxTween.color(bg, 1, bg.color, intendedColor);
 	}
-
-	intendedScore = FunkinSave.getSongHighscore(songs[curSelected_FP].name, songs[curSelected_FP].difficulties[curDifficulty]).score;
-	intendedRating = FunkinSave.getSongHighscore(songs[curSelected_FP].name, songs[curSelected_FP].difficulties[curDifficulty]).accuracy;
 	changeDiff(0);
 }
 

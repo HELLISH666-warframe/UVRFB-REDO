@@ -1,0 +1,11 @@
+{
+	"displayName": "bloodshed-two-b",
+	"bpm": 140.0,
+	"icon": "fan/extra-side/hellron2-b",
+	"difficulties": ["flip"],
+	"port": "bloodshed-two-b",
+	"normalport": false,
+	"color": "#0020C0",
+	"modlink": "https://gamebanana.com/mods/540473",
+	"version": "Vs Ron Extra Side"
+}

@@ -1,9 +1,9 @@
 import funkin.menus.GitarooPause;
+import haxe.io.Path;
 
 function new() {   
-    FlxG.save.data.chromeOffset ??= 0.5;
+    for (i in Paths.getFolderContent('data/global')) importScript("data/global/"+Path.withoutExtension(i)); //import different global scripts for organization reasons
 }
-public static var chromeOffset = (FlxG.save.data.chromeOffset/350);
 
 var redirectStates:Map<FlxState, String> = [
     MainMenuState => "V3/DesktopState",
