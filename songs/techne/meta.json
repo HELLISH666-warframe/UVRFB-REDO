@@ -1,0 +1,13 @@
+{
+	"displayName": "techne",
+	"difficulties": ["stained"],
+	"bpm": 150,
+	"port": "fan/azer/d-sides",
+	"color": "#7DCFF5",
+	"version": "dsideron",
+	"normalport": true,
+	"icon": "fan/Ron Dside/tech",
+	"modlink": "https://gamebanana.com/mods/530993",
+	"coopAllowed": false,
+	"opponentModeAllowed": false
+}
