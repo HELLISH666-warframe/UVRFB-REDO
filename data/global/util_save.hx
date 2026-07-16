@@ -8,6 +8,17 @@ function new() {
     modSave=FlxG.save.data.UNTITLED_VS_RON_FANBUILD_SAVE;
 
     modSave.chromeOffset ??= 0.5;
+    modSave.gameplaySettings??=[
+		'scrollspeed' => 1.0,
+		'scrolltype' => 'multiplicative', 
+		'songspeed' => 1.0,
+		'healthgain' => 1.0,
+		'healthloss' => 1.0,
+		'instakill' => false,
+		'practice' => false,
+		'botplay' => false,
+		'opponentplay' => false
+	];
 
     saveMyShit();
 }

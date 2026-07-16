@@ -6,6 +6,7 @@
 	"color": "#7DCFF5",
 	"version": "Ron Dside",
 	"normalport": true,
+	"engine":"Psike",
 	"icon": "fan/Ron Dside/tech",
 	"modlink": "https://gamebanana.com/mods/530993",
 	"coopAllowed": false,
