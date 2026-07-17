@@ -1,22 +1,21 @@
+import flixel.effects.particles.FlxTypedEmitter;
+import flixel.effects.particles.FlxParticle;
 import flixel.addons.display.FlxBackdrop;
 import funkin.backend.utils.DiscordUtil;
+import flixel.text.FlxTextBorderStyle;
 import funkin.savedata.FunkinSave;
 import funkin.backend.chart.Chart;
 import flixel.graphics.FlxGraphic;
-import flixel.effects.particles.FlxParticle;
-import flixel.effects.particles.FlxTypedEmitter;
-import funkin.backend.system.framerate.Framerate;
 import V3.Alphabetthing;
 
 var songs = [];
-songRealList = [['techne'],['blizzard-classic'],['techne','backdoor','blizzard-classic','bloodshed-dside','apollo']];
-modelist = ["MAIN","CLASSIC","EXTRAS"];
+songRealList = [[],['techne'],['techne','backdoor','blizzard-classic','bloodshed-dside','apollo']];
 rsongsFound = songRealList[FlxG.save.data.freeplaything];
 
 for(s in rsongsFound)
 	songs.push(Chart.loadChartMeta(s, "hard", true));
 
-static var curSelected_FP:Int = 0;
+static var curSelPFP:Int = 0;
 
 var curDifficulty:Int = 1;
 
@@ -42,10 +41,9 @@ var portrait = new FlxSprite();
 var portraitOverlay = new FlxSprite();
 var preload = [];
 static var curSelectReal = [0,0,0,0,0];
-modelist = ["MAIN","CLASSIC","EXTRAS","B-SIDES","FANMADE"];
+modelist = ["FINISHED","WIP","ALL"];
 var modeText:FlxText = new FlxText(10, 10, 0, modelist[FlxG.save.data.freeplaything], 48);
-var fanmade_text = new FlxText(540, 1, 0, '', 48);
-var pressshift:FlxText = new FlxText(1, 100, 0, "Press shift to view the page of this fan-mod!", 48);
+var fanmade_text = new FlxText(160, 600, 0, '', 48);
 
 function create() {
 	CoolUtil.playMenuSong(true);
@@ -79,16 +77,6 @@ function create() {
 		var graphic = FlxGraphic.fromAssetKey(Paths.image(kms));
 		graphic.persist = true;
 		preload.push(graphic);
-	}
-
-	fanmade_text.setFormat(Paths.font("V3/w95.otf"), 48, FlxColor.RED);
-	fanmade_text.angle=-3;
-	insert(9,fanmade_text);
-
-	pressshift.setFormat(Paths.font("V3/w95.otf"), 32, FlxColor.WHITE);
-	//pressshift.camera=camText;
-	if(FlxG.save.data.freeplaything==4){insert(2,pressshift);
-	portrait.x=900;
 	}
 
 	if (FlxG.save.data.glitch)FlxG.camera.addShader(glitch);
@@ -154,11 +142,17 @@ function create() {
 
 	add(scoreText);
 
+	add(fanBG = new FlxSprite(-380,600).makeSolid(FlxG.width,40,0xFF000000)).alpha = 0.6;
+	fanBG.camera=camText;
+	fanmade_text.setFormat(Paths.font("V3/w95.otf"), 48, FlxColor.RED,'left', FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+	add(fanmade_text).camera=camText;
+	fanmade_text.borderSize=1.5;
+
 	changeSelection(0);
 
 	add(textBG = new FlxSprite(0, FlxG.height - 26).makeSolid(FlxG.width, 26, 0xFF000000)).alpha = 0.6;
 
-	var text:FlxText = new FlxText(textBG.x, textBG.y + 4, FlxG.width, 'Press SPACE to listen to the Song / Press CTRL to open the Gameplay Changers Menu.');
+	var text = new FlxText(textBG.x, textBG.y + 4, FlxG.width, 'Press SPACE to listen to the Song / Press CTRL to open the Gameplay Changers Menu.');
 	text.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, 'right');
 	text.scrollFactor.set();
 	add(text);
@@ -211,19 +205,19 @@ function update(elapsed:Float) {
 	}
 	if (controls.LEFT_P||controls.RIGHT_P) changeDiff(controls.LEFT_P?-1:1);
 	else if (FlxG.keys.justPressed.SPACE) {
-		if (instPlaying != curSelected_FP) {
+		if (instPlaying != curSelPFP) {
 			#if PRELOAD_ALL
 			FlxG.sound.music.volume = 0;
 
-			FlxG.sound.playMusic(Paths.inst(songs[curSelected_FP].name, songs[curSelected_FP].difficulties[curDifficulty]), 0.7);
-			instPlaying = curSelected_FP;
+			FlxG.sound.playMusic(Paths.inst(songs[curSelPFP].name, songs[curSelPFP].difficulties[curDifficulty]), 0.7);
+			instPlaying = curSelPFP;
 			#end
 		}
 	}
 	else if (controls.ACCEPT) {
-		var songLowercase:String = songs[curSelected_FP].name;
+		var songLowercase:String = songs[curSelPFP].name;
 		persistentUpdate = false;
-		PlayState.loadSong(songs[curSelected_FP].name, songs[curSelected_FP].difficulties[curDifficulty].toLowerCase());
+		PlayState.loadSong(songs[curSelPFP].name, songs[curSelPFP].difficulties[curDifficulty].toLowerCase());
 		FlxG.switchState(new PlayState());
 	
 		FlxG.sound.music.volume = 0;
@@ -243,23 +237,23 @@ function update(elapsed:Float) {
 	for (i in 0...songs.length)
 		grpSongs.members[i].y += (Math.sin(i+time)/2);
 	for (item in grpSongs.members)
-		item.forceX = FlxMath.lerp(item.x, 125 + (65 * (item.ID - curSelected_FP)), lerpFix(0.1));
+		item.forceX = FlxMath.lerp(item.x, 125 + (65 * (item.ID - curSelPFP)), lerpFix(0.1));
 	portraitOverlay.y = portrait.y;
 	portraitOverlay.angle = portrait.angle;
-	if(controls.BACK)FlxG.switchState(new ModState('V3/MasterFreeplayState'));
-	if(FlxG.keys.pressed.SHIFT && songs[curSelected_FP].modlink!=null) {
-		CoolUtil.openURL(songs[curSelected_FP].modlink);
+	if(controls.BACK)FlxG.switchState(new MainMenuState());
+	if(FlxG.keys.pressed.SHIFT && songs[curSelPFP].modlink!=null) {
+		CoolUtil.openURL(songs[curSelPFP].modlink);
 	}
 	for (i in 0...grpSongs.length)
 		iconArray[i].setPosition(grpSongs.members[i].x+grpSongs.members[i].width+10,grpSongs.members[i].y-30);
 }
 function changeDiff(change:Int = 0) {
-	curDifficulty = FlxMath.wrap(curDifficulty + change, 0, songs[curSelected_FP].difficulties.length-1);
+	curDifficulty = FlxMath.wrap(curDifficulty + change, 0, songs[curSelPFP].difficulties.length-1);
 
-	intendedScore = FunkinSave.getSongHighscore(songs[curSelected_FP].name, songs[curSelected_FP].difficulties[curDifficulty]).score;
-	intendedRating = FunkinSave.getSongHighscore(songs[curSelected_FP].name, songs[curSelected_FP].difficulties[curDifficulty]).accuracy;
+	intendedScore = FunkinSave.getSongHighscore(songs[curSelPFP].name, songs[curSelPFP].difficulties[curDifficulty]).score;
+	intendedRating = FunkinSave.getSongHighscore(songs[curSelPFP].name, songs[curSelPFP].difficulties[curDifficulty]).accuracy;
 
-	diffText.text = '< ' + songs[curSelected_FP].difficulties[curDifficulty].toUpperCase() + ' >';
+	diffText.text = '< ' + songs[curSelPFP].difficulties[curDifficulty].toUpperCase() + ' >';
 	diffText.color = switch(diffText.text) {
 		case '< COOL >':0xF00020;
 		case '< STAINED >':0x347FF1;
@@ -289,52 +283,49 @@ function shadering(REAL:Int,?string:String=""){
 		return;
 	}
 
-	if(cursong.normalport){
-	FlxTween.tween(fanmade_text, {angle:-1,x:540,y:0}, 0.2, {ease: FlxEase.quintIn});
-	FlxTween.tween(bar, {angle:0,x:490}, 0.2, {ease: FlxEase.quintIn});
-	FlxTween.tween(portrait, {x:0,angle:0}, 0.4, {ease: FlxEase.quintIn});
-	}
-	else if(!cursong.normalport){
-	FlxTween.tween(fanmade_text, {angle:4,x:580,y:650}, 0.2, {ease: FlxEase.quintIn});
-	FlxTween.tween(bar, {angle:30,x:400}, 0.2, {ease: FlxEase.quintIn});
-	FlxTween.tween(portrait, {angle:5,x:600}, 0.2, {ease: FlxEase.quintIn});
+	if(fanmade_text.text!=songs[curSelPFP].version)fanmade_text.alpha=0;
+	FlxTween.tween(fanmade_text, {alpha:1}, 0.2, {ease: FlxEase.quintIn});
+	fanmade_text.text=songs[curSelPFP].version;
+	fanBG.scale.x=fanmade_text.width;
+	for(i in [bar,portrait]) {
+		FlxTween.cancelTweensOf(i,['alpha']);
+		FlxTween.tween(i, {alpha:cursong.port=='none'?0.2:1}, 0.5, {ease: FlxEase.quadIn});
 	}
 }
 
 function changeSelection(change:Int = 0, playSound:Bool = true) {
 	playSound??=true;
 	if (playSound) FlxG.sound.play(Paths.sound('scrollMenu'), 0.4);
-	curSelected_FP = FlxMath.wrap(curSelected_FP + change, 0, songs.length-1);
-	curSelectReal[FlxG.save.data.freeplaything]=curSelected_FP;
-	fanmade_text.text=songs[curSelected_FP].version;
+	curSelPFP = FlxMath.wrap(curSelPFP + change, 0, songs.length-1);
+	curSelectReal[FlxG.save.data.freeplaything]=curSelPFP;
 
 	var bullShit:Int = 0;
 
 	for (i in grpSongs){
-		i.targetY = bullShit - curSelected_FP;
+		i.targetY = bullShit - curSelPFP;
 		bullShit++;
 		i.alpha = 0.6;
 		if (i.targetY == 0) i.alpha = 1;
 	}
 
 	for (i in 0...iconArray.length) iconArray[i].alpha = 0.6;
-	iconArray[curSelected_FP].alpha = 1;
-	shadering(curSelected_FP);
+	iconArray[curSelPFP].alpha = 1;
+	shadering(curSelPFP);
 
-	if(!songs[curSelected_FP].normalport){
+	if(!songs[curSelPFP].normalport){
 	FlxTween.tween(portrait, {y: portrait.y + 300}, 0.2, {ease: FlxEase.quintIn, onComplete: function(twn:FlxTween) {
-		portrait.loadGraphic(preload[curSelected_FP]);
-		shadering(curSelected_FP,"hand");
+		portrait.loadGraphic(preload[curSelPFP]);
+		shadering(curSelPFP,"hand");
 		portrait.screenCenter(FlxAxes.Y);
 		var mfwY2 = portrait.y;
 		portrait.y -= 20;
 		FlxTween.tween(portrait, {y: mfwY2}, 0.4, {ease: FlxEase.elasticOut});
 	}});
 	}
-	if(songs[curSelected_FP].normalport){
+	if(songs[curSelPFP].normalport){
 	FlxTween.tween(portrait, {y: portrait.y + 45, angle: 5}, 0.2, {ease: FlxEase.quintIn, onComplete: function(twn:FlxTween) {
-		portrait.loadGraphic(preload[curSelected_FP]);
-		shadering(curSelected_FP,"hand");
+		portrait.loadGraphic(preload[curSelPFP]);
+		shadering(curSelPFP,"hand");
 		portrait.screenCenter();
 		var mfwY = portrait.y;
 		portrait.y -= 20;
@@ -343,7 +334,7 @@ function changeSelection(change:Int = 0, playSound:Bool = true) {
 	}});
 }
 
-	var newColor:Int = songs[curSelected_FP].color;
+	var newColor:Int = songs[curSelPFP].color;
 	if (newColor != intendedColor) {
 		intendedColor = newColor;
 		FlxTween.cancelTweensOf(bg,['color']);

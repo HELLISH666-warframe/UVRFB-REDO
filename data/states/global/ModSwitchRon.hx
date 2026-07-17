@@ -20,7 +20,7 @@ function create() {
 	mods.push(null);
 	changeSelection(0, true);
 
-	if(FlxG.save.data.show_user_name){
+	if(modSave.show_user_name){
 	#if WINDOWS
 	window.title="Browsing "+Sys.environment()["USERNAME"]+"'s pc.";
 	#else
@@ -41,7 +41,7 @@ function create() {
 		text.updateHitbox();
 		foldertext.add(text);
 
-		var folder = new FlxSprite().loadGraphic(Paths.image("menus/remove_later/modswitch/folder"));
+		var folder = new FlxSprite().loadGraphic(Paths.image("menus/UVRPD/modswitch/folder"));
 		folder.setPosition(text.x+text.width-75,text.y-50);
 		folder.setGraphicSize(50, 50);
 		folder.updateHitbox();
@@ -51,7 +51,7 @@ function create() {
 	add(foldertext);
     add(folders);
 
-	add(back = new FlxSprite().loadGraphic(Paths.image('menus/remove_later/modswitch/ewdfhbruihb'))).camera=subCam;
+	add(back = new FlxSprite().loadGraphic(Paths.image('menus/UVRPD/modswitch/ewdfhbruihb'))).camera=subCam;
 	add(hitbox = new FlxSprite(1246, 5).makeSolid(30, 14, 0xE0000020)).alpha = 0;
 	hitbox.width=60;
 	hitbox.height=60;
@@ -60,9 +60,7 @@ function create() {
 	objectsText.setFormat(Paths.font("w95.otf"),15,FlxColor.BLACK,'right');
 	add(objectsText).camera=subCam;
 
-	if (FlxG.save.data.crt) subCam.addShader(cunvrehgu = new CustomShader("fake CRT"));
-	//loadTheCursor('');
-	trace(CoolUtil.getSizeString(FileSystem.stat(Paths.file("images/characters/dad.png")).size));
+	if (FlxG.save.data.crt) subCam.addShader(cunvrehgu = new CustomShader("V3/fake CRT"));
 }
 import sys.FileSystem;
 import haxe.io.Bytes;

@@ -12,8 +12,8 @@ function preStateSwitch() {
         MainMenuState => "V3/DesktopState",StoryMenuState => "V3/DesktopState",FreeplayState => "V3/FreeplayState",
         CreditsMain => "V3/CreditsRon",GitarooPause => "V3/MasterFreeplayState"];
         case 'DEV':redirectStates = [
-        TitleState => "V3/MasterFreeplayState",MainMenuState => "V3/MasterFreeplayState",
-        StoryMenuState => "V3/MasterFreeplayState",GitarooPause => "V3/MasterFreeplayState",
+        TitleState => "PLACEHOLDER/MasterFreeplayState",MainMenuState => "PLACEHOLDER/MasterFreeplayState",
+        StoryMenuState => "PLACEHOLDER/MasterFreeplayState",GitarooPause => "PLACEHOLDER/MasterFreeplayState",
         FreeplayState => "PLACEHOLDER/FreeplayState"];
     }
     for (redirectState in redirectStates.keys()) 
