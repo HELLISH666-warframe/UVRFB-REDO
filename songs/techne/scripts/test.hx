@@ -1,23 +1,3 @@
-var tweenMap:Map<String, FlxTween>=[];
-var timerMap:Map<String, FlxTimer>=[];
-var strumLineNotes = [];
-
-function tween(name,object,fuck,speed,?easE,?colored){
-    if(!object.exists)return;
-    if (tweenMap.exists(name)) tweenMap.get(name).cancel();
-    if(colored==null)
-    tweenMap.set(name,FlxTween.tween(object, fuck, speed,if(easE!=null){ease:Reflect.field(FlxEase,easE)}));
-    else{
-    tweenMap.set(name,FlxTween.color(object,speed,(object.color & 0xffffff) + 0xff000000,fuck[1],if(easE!=null){ease:Reflect.field(FlxEase,easE)}));//Both_colors_NEEDS_the_alpha_channel_to_be_stated.
-    }
-}
-
-function runTimer(tag,time,?loops){
-    loops??=1;
-    if (timerMap.exists(tag)) timerMap.get(tag).cancel();
-    tweenMap.set(tag,new FlxTimer().start(time,function(tmr:FlxTimer) {onTimerCompleted(tag,tmr.loops,tmr.loopsLeft);},loops));
-}
-
 var pentyVar = 0;
 var owo = 0;
 var owo2 = 0;
@@ -27,22 +7,6 @@ var daTingY = false;
 var daTingYSmall = false;
 var hudAngle = false;
 var yippee = 1;
-
-function postCreate() {
-    for (i in cpuStrums.members){strumLineNotes.push(i);}
-    for (i in playerStrums.members) {strumLineNotes.push(i);}
-    for(i in 0...2)strumLines.members[i].forEach((a) -> {a.noteAngle=0;});
-
-    for(i in 0...strumLines.length){
-		if(!strumLines.members[i].visible)return;
-		for(l in 0...strumLines.members[i].members.length)
-	strumLines.members[i].members[l].extraCopyFields=['alpha'];
-	}
-}
-
-function onPostNoteCreation(e) {
-	e.note.forceIsOnScreen = true;
-}
 
 function onSongStart(){
     tween('appearHUD',camHUD, {alpha:1}, 0.5);
@@ -57,8 +21,8 @@ function beatHit(){
         case 464:for(i in 0...strumLineNotes.length)tween('NoteMoveY'+i,strumLineNotes[i],{y:350},6,'linear');
         case 32:tween('byeDead',dead, {alpha:1}, 0.5,'quadInOut');
         tween('yeah',pentycanvas,[pentycanvas.color,0xFFFFFF],3,'linear',true);
-        tween('scalebad',pentycanvas.scale, {x:3}, 1.5,'quadInOut');
-        tween('scalebad2',pentycanvas.scale, {y:3}, 1.5,'quadInOut');
+        tween('scalebad',pentycanvas, {'scale.x':3}, 1.5,'quadInOut');
+        tween('scalebad2',pentycanvas, {'scale.y':3}, 1.5,'quadInOut');
         tween('scalebad3',pentycanvas, {x:280}, 1.5,'quadInOut');
         tween('scalebad4',pentycanvas, {y:170}, 1.5,'quadInOut');
         tween('icooooonBite',simge2, {alpha:0}, 1.5,'quadInOut');
@@ -568,13 +532,13 @@ function onTimerCompleted(tag:String){
     switch(tag){
         case 'start':tween('alpha11',deadly1,{alpha:owo2},0.5,'circInOut');
         tween('alpha12',deadly2,{alpha:owo},0.5,'circInOut');
-        tween('alpha13',deadly1.scale,{x:1.25},0.5,'circInOut');
-        tween('alpha14',deadly2.scale,{y:0.75},0.5,'circInOut');
+        tween('alpha13',deadly1,{'scale.x':1.25},0.5,'circInOut');
+        tween('alpha14',deadly2,{'scale.y':0.75},0.5,'circInOut');
         runTimer('end', 0.5);
         case 'end':tween('alpha11',deadly1,{alpha:owo},0.5,'circInOut');
         tween('alpha12',deadly2,{alpha:owo2},0.5,'circInOut');
-        tween('alpha13',deadly1.scale,{x:0.75},0.5,'circInOut');
-        tween('alpha14',deadly2.scale,{y:1.25},0.5,'circInOut');
+        tween('alpha13',deadly1,{'scale.x':0.75},0.5,'circInOut');
+        tween('alpha14',deadly2,{'scale.y':1.25},0.5,'circInOut');
         runTimer('start', 0.5);
         case 'movePaint':runTimer('movePaint', 0.06);
         kamehameha.y+=250;

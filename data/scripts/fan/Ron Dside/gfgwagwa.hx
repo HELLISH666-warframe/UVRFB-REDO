@@ -1,0 +1,1 @@
+function postCreate() gf.alpha=0;

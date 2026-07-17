@@ -39,7 +39,7 @@ function postCreate() {
 	timeTxt.alpha = 1;
 	timeTxt.borderSize = 2;
 
-    timeBarBG = new FlxSprite().loadGraphic(Paths.image('timeBar'));
+    timeBarBG = new FlxSprite().loadGraphic(Paths.image('engine/Psike/timeBar'));
 	timeBarBG.x = timeTxt.x;
 	timeBarBG.y = timeTxt.y + (timeTxt.height / 4);
 	timeBarBG.scrollFactor.set();

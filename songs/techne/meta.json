@@ -4,6 +4,7 @@
 	"bpm": 150,
 	"port": "fan/azer/techne",
 	"color": "#7DCFF5",
+	"scripts":"fan/Ron Dside",
 	"version": "Ron Dside",
 	"normalport": true,
 	"engine":"Psike",

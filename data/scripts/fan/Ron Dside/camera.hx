@@ -1,0 +1,1 @@
+function create()cameraSpeed=0.6;
