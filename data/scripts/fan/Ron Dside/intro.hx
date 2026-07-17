@@ -8,8 +8,7 @@ function create(){
 
     for(i in [three,two,one,go]){
         insert(5,i);
-        i.scale.set(1.5,1.5);
-        i.updateHitbox();
+        scaleObject(i,1.5,1.5);
         i.camera=camOther;
         i.screenCenter(FlxAxes.XY);
         i.alpha=0;
@@ -17,6 +16,9 @@ function create(){
 }
 
 function onCountdown(e){
+    if(e.swagCounter > 3)return;
+    e.soundPath='fan/Ron Dside/intro'+[3,2,1,'Go'][e.swagCounter];
+    e.spritePath=null;
     switch(e.swagCounter){
         case 0: tween('hehe',three, {alpha:0}, 0.25);
         tween('ohhar',three, {angle:-30}, 0.25,'cubeIn');

@@ -1,0 +1,15 @@
+{
+	"displayName": "bloodshed-dside",
+	"difficulties": ["stained"],
+	"icon": "fan/Ron Dside/techne",
+	"bpm": 170,
+	"color": "#7DCFF5",
+	"scripts":"fan/Ron Dside",
+	"version": "Ron Dside",
+	"port": "none",
+	"normalport": false,
+	"engine":"Psike",
+	"modlink": "https://gamebanana.com/mods/530993",
+	"coopAllowed": true,
+	"opponentModeAllowed": true
+}

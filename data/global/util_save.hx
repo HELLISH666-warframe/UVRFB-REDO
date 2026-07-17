@@ -19,6 +19,9 @@ function new() {
 		'botplay' => false,
 		'opponentplay' => false
 	];
+	
+	//Mod_specfic_shit.
+	modSave.modVersion??='V3';
 
     saveMyShit();
 }

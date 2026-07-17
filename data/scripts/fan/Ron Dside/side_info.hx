@@ -1,5 +1,8 @@
 import flixel.text.FlxTextBorderStyle;
-public var sicks,goods,bads,shits;
+public var sicks;
+public var goods;
+public var bads;
+public var shits;
 function postCreate(){
     sicks = new FlxText(0,375,200,"Cools: "+hits['sick'], 20);
     goods = new FlxText(0,400,200,"Goods: "+hits['good'], 20);

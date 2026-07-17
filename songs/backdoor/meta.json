@@ -1,0 +1,15 @@
+{
+	"displayName": "backdoor",
+	"difficulties": ["stained"],
+	"icon": "fan/Ron Dside/power_conall",
+	"bpm": 180,
+	"color": "#253942",
+	"scripts":"fan/Ron Dside",
+	"version": "Ron Dside",
+	"port": "none",
+	"normalport": false,
+	"engine":"Psike",
+	"modlink": "https://gamebanana.com/mods/530993",
+	"coopAllowed": true,
+	"opponentModeAllowed": true
+}

@@ -1,0 +1,15 @@
+{
+	"displayName": "blizzard-classic",
+	"difficulties": ["flip"],
+	"bpm": 135,
+	"port": "none",
+	"color": "#FFFFFF",
+	"scripts":"fan/Ron Dside",
+	"version": "Ron Dside",
+	"normalport": false,
+	"engine":"Psike",
+	"icon": "fan/Ron Dside/hellron-b",
+	"modlink": "https://gamebanana.com/mods/530993",
+	"coopAllowed": true,
+	"opponentModeAllowed": true
+}

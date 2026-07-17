@@ -1,4 +1,3 @@
-
 import flixel.addons.display.FlxBackdrop;
 import funkin.backend.utils.DiscordUtil;
 import funkin.savedata.FunkinSave;
@@ -10,10 +9,8 @@ import funkin.backend.system.framerate.Framerate;
 import V3.Alphabetthing;
 
 var songs = [];
-songRealList = [
-	['techne']
-];
-modelist = ["MAIN","CLASSIC","EXTRAS","B-SIDES","FANMADE"];
+songRealList = [['techne'],['blizzard-classic'],['techne','backdoor','blizzard-classic','bloodshed-dside','apollo']];
+modelist = ["MAIN","CLASSIC","EXTRAS"];
 rsongsFound = songRealList[FlxG.save.data.freeplaything];
 
 for(s in rsongsFound)

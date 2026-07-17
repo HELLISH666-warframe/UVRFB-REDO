@@ -1,0 +1,15 @@
+{
+	"displayName": "apollo",
+	"difficulties": ["stained"],
+	"icon": "fan/Ron Dside/Apollo",
+	"bpm": 185,
+	"color": "#347491",
+	"scripts":"fan/Ron Dside",
+	"version": "Ron Dside",
+	"port": "none",
+	"normalport": false,
+	"engine":"Psike",
+	"modlink": "https://gamebanana.com/mods/530993",
+	"coopAllowed": true,
+	"opponentModeAllowed": true
+}
