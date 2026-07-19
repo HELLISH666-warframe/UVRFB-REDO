@@ -550,6 +550,247 @@ function update(elapsed:Float){
     var currentBeat = (Conductor.songPosition/100)/(Conductor.bpm/170);
     currentBeat2 = (Conductor.songPosition / 1000) * (PlayState.SONG.meta.bpm / 170);
 
+    //canvas.y=boyfriend.y-550;
+
+    if (curBeat >= 380 && curBeat <= 444){  
+        tween('defaultPlayerStrumX0rft',cpuStrums.members[0],{x:120+(Math.sin(currentBeat/8+0.1)*50)},0.25);
+        tween('defaultPlayerStrumX1rft',cpuStrums.members[1],{x:230+(Math.sin(currentBeat/8+0.2)*50)},0.25);
+        tween('defaultPlayerStrumX2rft',cpuStrums.members[2],{x:340+(Math.sin(currentBeat/8+0.3)*50)},0.25);
+        tween('defaultPlayerStrumX3rft',cpuStrums.members[3],{x:450+(Math.sin(currentBeat/8+0.4)*50)},0.25);
+        tween('defaultPlayerStrumX4rft',playerStrums.members[0],{x:720+(Math.sin(currentBeat/8+0.5)*50)},0.25);
+        tween('defaultPlayerStrumX5rft',playerStrums.members[1],{x:830+(Math.sin(currentBeat/8+0.6)*50)},0.25);
+        tween('defaultPlayerStrumX6rft',playerStrums.members[2],{x:940+(Math.sin(currentBeat/8+0.7)*50)},0.25);
+        tween('defaultPlayerStrumX7rft',playerStrums.members[3],{x:1050+(Math.sin(currentBeat/8+0.8)*50)},0.25);
+    }
+    if (curBeat >= 412 && curBeat <= 444){
+        tween('defaultPlayerStrumX0rfta',cpuStrums.members[0],{angle:0+(Math.sin(currentBeat/7+0.1)*5)},0.25);
+        tween('defaultPlayerStrumX1rfta',cpuStrums.members[1],{angle:0+(Math.sin(currentBeat/7+0.2)*5)},0.25);
+        tween('defaultPlayerStrumX2rfta',cpuStrums.members[2],{angle:0+(Math.sin(currentBeat/7+0.3)*5)},0.25);
+        tween('defaultPlayerStrumX3rfta',cpuStrums.members[3],{angle:0+(Math.sin(currentBeat/7+0.4)*5)},0.25);
+        tween('defaultPlayerStrumX4rfta',playerStrums.members[0],{angle:0+(Math.sin(currentBeat/7+0.5)*5)},0.25);
+        tween('defaultPlayerStrumX5rfta',playerStrums.members[1],{angle:0+(Math.sin(currentBeat/7+0.6)*5)},0.25);
+        tween('defaultPlayerStrumX6rfta',playerStrums.members[2],{angle:0+(Math.sin(currentBeat/7+0.7)*5)},0.25);
+        tween('defaultPlayerStrumX7rfta',playerStrums.members[3],{angle:0+(Math.sin(currentBeat/7+0.8)*5)},0.25);
+    }
+    if (curBeat >= 140 && curBeat < 168){
+        if (curBeat >= 140 && curBeat < 144){
+            tween('defaultPlayerStrumX0rf',cpuStrums.members[0],{x:750+(Math.sin(currentBeat/3+0.1)*450)},0.25);
+            tween('defaultPlayerStrumX1rf',cpuStrums.members[1],{x:640+(Math.sin(currentBeat/3+0.1)*450)},0.25);
+            tween('defaultPlayerStrumX2rf',cpuStrums.members[2],{x:530+(Math.sin(currentBeat/3+0.1)*450)},0.25);
+            tween('defaultPlayerStrumX3rf',cpuStrums.members[3],{x:420+(Math.sin(currentBeat/3+0.1)*450)},0.25);
+            tween('defaultPlayerStrumX4rf',playerStrums.members[0],{x:420+(Math.sin(currentBeat/3+0.1)*-450)},0.25);
+            tween('defaultPlayerStrumX5rf',playerStrums.members[1],{x:530+(Math.sin(currentBeat/3+0.1)*-450)},0.25);
+            tween('defaultPlayerStrumX6rf',playerStrums.members[2],{x:640+(Math.sin(currentBeat/3+0.1)*-450)},0.25);
+            tween('defaultPlayerStrumX7rf',playerStrums.members[3],{x:750+(Math.sin(currentBeat/3+0.1)*-450)},0.25);
+        }
+        if (curBeat >= 144 && curBeat < 148){
+            tween('defaultPlayerStrumX0rf',cpuStrums.members[0],{x:420+(Math.sin(currentBeat/3+0.1)*450)},0.25);
+            tween('defaultPlayerStrumX1rf',cpuStrums.members[1],{x:530+(Math.sin(currentBeat/3+0.1)*450)},0.25);
+            tween('defaultPlayerStrumX2rf',cpuStrums.members[2],{x:640+(Math.sin(currentBeat/3+0.1)*450)},0.25);
+            tween('defaultPlayerStrumX3rf',cpuStrums.members[3],{x:750+(Math.sin(currentBeat/3+0.1)*450)},0.25);
+            tween('defaultPlayerStrumX4rf',playerStrums.members[0],{x:420+(Math.sin(currentBeat/3+0.1)*-450)},0.25);
+            tween('defaultPlayerStrumX5rf',playerStrums.members[1],{x:530+(Math.sin(currentBeat/3+0.1)*-450)},0.25);
+            tween('defaultPlayerStrumX6rf',playerStrums.members[2],{x:640+(Math.sin(currentBeat/3+0.1)*-450)},0.25);
+            tween('defaultPlayerStrumX7rf',playerStrums.members[3],{x:750+(Math.sin(currentBeat/3+0.1)*-450)},0.25);
+        }
+        if (curBeat >= 148 && curBeat < 152){
+            tween('defaultPlayerStrumX0rf',cpuStrums.members[0],{x:750+(Math.sin(currentBeat/3+0.1)*450)},0.25);
+            tween('defaultPlayerStrumX1rf',cpuStrums.members[1],{x:640+(Math.sin(currentBeat/3+0.1)*450)},0.25);
+            tween('defaultPlayerStrumX2rf',cpuStrums.members[2],{x:530+(Math.sin(currentBeat/3+0.1)*450)},0.25);
+            tween('defaultPlayerStrumX3rf',cpuStrums.members[3],{x:420+(Math.sin(currentBeat/3+0.1)*450)},0.25);
+            tween('defaultPlayerStrumX4rf',playerStrums.members[0],{x:420+(Math.sin(currentBeat/3+0.1)*-450)},0.25);
+            tween('defaultPlayerStrumX5rf',playerStrums.members[1],{x:530+(Math.sin(currentBeat/3+0.1)*-450)},0.25);
+            tween('defaultPlayerStrumX6rf',playerStrums.members[2],{x:640+(Math.sin(currentBeat/3+0.1)*-450)},0.25);
+            tween('defaultPlayerStrumX7rf',playerStrums.members[3],{x:750+(Math.sin(currentBeat/3+0.1)*-450)},0.25);
+        }
+        if (curBeat >= 152 && curBeat < 156){
+            tween('defaultPlayerStrumX0rf',cpuStrums.members[0],{x:420+(Math.sin(currentBeat/3+0.1)*450)},0.25);
+            tween('defaultPlayerStrumX1rf',cpuStrums.members[1],{x:530+(Math.sin(currentBeat/3+0.1)*450)},0.25);
+            tween('defaultPlayerStrumX2rf',cpuStrums.members[2],{x:640+(Math.sin(currentBeat/3+0.1)*450)},0.25);
+            tween('defaultPlayerStrumX3rf',cpuStrums.members[3],{x:750+(Math.sin(currentBeat/3+0.1)*450)},0.25);
+            tween('defaultPlayerStrumX4rf',playerStrums.members[0],{x:420+(Math.sin(currentBeat/3+0.1)*-450)},0.25);
+            tween('defaultPlayerStrumX5rf',playerStrums.members[1],{x:530+(Math.sin(currentBeat/3+0.1)*-450)},0.25);
+            tween('defaultPlayerStrumX6rf',playerStrums.members[2],{x:640+(Math.sin(currentBeat/3+0.1)*-450)},0.25);
+            tween('defaultPlayerStrumX7rf',playerStrums.members[3],{x:750+(Math.sin(currentBeat/3+0.1)*-450)},0.25);
+        }
+        if (curBeat >= 156 && curBeat < 160){
+            tween('defaultPlayerStrumX0rf',cpuStrums.members[0],{x:420+(Math.sin(currentBeat/3+0.1)*450)},0.25);
+            tween('defaultPlayerStrumX1rf',cpuStrums.members[1],{x:530+(Math.sin(currentBeat/3+0.1)*450)},0.25);
+            tween('defaultPlayerStrumX2rf',cpuStrums.members[2],{x:640+(Math.sin(currentBeat/3+0.1)*450)},0.25);
+            tween('defaultPlayerStrumX3rf',cpuStrums.members[3],{x:750+(Math.sin(currentBeat/3+0.1)*450)},0.25);
+            tween('defaultPlayerStrumX4rf',playerStrums.members[0],{x:750+(Math.sin(currentBeat/3+0.1)*-450)},0.25);
+            tween('defaultPlayerStrumX5rf',playerStrums.members[1],{x:640+(Math.sin(currentBeat/3+0.1)*-450)},0.25);
+            tween('defaultPlayerStrumX6rf',playerStrums.members[2],{x:530+(Math.sin(currentBeat/3+0.1)*-450)},0.25);
+            tween('defaultPlayerStrumX7rf',playerStrums.members[3],{x:420+(Math.sin(currentBeat/3+0.1)*-450)},0.25);
+        }
+        if (curBeat >= 160 && curBeat < 164){
+            tween('defaultPlayerStrumX0rf',cpuStrums.members[0],{x:420+(Math.sin(currentBeat/3+0.1)*450)},0.25);
+            tween('defaultPlayerStrumX1rf',cpuStrums.members[1],{x:530+(Math.sin(currentBeat/3+0.1)*450)},0.25);
+            tween('defaultPlayerStrumX2rf',cpuStrums.members[2],{x:640+(Math.sin(currentBeat/3+0.1)*450)},0.25);
+            tween('defaultPlayerStrumX3rf',cpuStrums.members[3],{x:750+(Math.sin(currentBeat/3+0.1)*450)},0.25);
+            tween('defaultPlayerStrumX4rf',playerStrums.members[0],{x:420+(Math.sin(currentBeat/3+0.1)*-450)},0.25);
+            tween('defaultPlayerStrumX5rf',playerStrums.members[1],{x:530+(Math.sin(currentBeat/3+0.1)*-450)},0.25);
+            tween('defaultPlayerStrumX6rf',playerStrums.members[2],{x:640+(Math.sin(currentBeat/3+0.1)*-450)},0.25);
+            tween('defaultPlayerStrumX7rf',playerStrums.members[3],{x:750+(Math.sin(currentBeat/3+0.1)*-450)},0.25);
+        }
+        if (curBeat >= 164 && curBeat < 168){
+            tween('defaultPlayerStrumX0rf',cpuStrums.members[0],{x:420+(Math.sin(currentBeat/3+0.1)*450)},0.25);
+            tween('defaultPlayerStrumX1rf',cpuStrums.members[1],{x:530+(Math.sin(currentBeat/3+0.1)*450)},0.25);
+            tween('defaultPlayerStrumX2rf',cpuStrums.members[2],{x:640+(Math.sin(currentBeat/3+0.1)*450)},0.25);
+            tween('defaultPlayerStrumX3rf',cpuStrums.members[3],{x:750+(Math.sin(currentBeat/3+0.1)*450)},0.25);
+            tween('defaultPlayerStrumX4rf',playerStrums.members[0],{x:750+(Math.sin(currentBeat/3+0.1)*-450)},0.25);
+            tween('defaultPlayerStrumX5rf',playerStrums.members[1],{x:640+(Math.sin(currentBeat/3+0.1)*-450)},0.25);
+            tween('defaultPlayerStrumX6rf',playerStrums.members[2],{x:530+(Math.sin(currentBeat/3+0.1)*-450)},0.25);
+            tween('defaultPlayerStrumX7rf',playerStrums.members[3],{x:420+(Math.sin(currentBeat/3+0.1)*-450)},0.25);
+        }
+    }
+
+    if (curBeat >= 176 && curBeat < 300){  
+        camHUD.x=0 - -40 * Math.cos((currentBeat2*0.33)*Math.PI);
+        camHUD.y=0 - -20 * Math.cos((currentBeat2*0.42)*Math.PI);
+    }
+
+    //if (curBeat < 548) canvas.angle=0 - 18 * Math.cos((currentBeat2*0.36)*Math.PI);
+
+    if (hudAngle) camHUD.angle=0 - -15*yippee * Math.cos((currentBeat2*0.33)*Math.PI);
+
+    if (daTingX){
+        tween('defaultPlayerStrumX0r',cpuStrums.members[0],{x:120+(Math.sin(currentBeat/3+0.1)*50)},0.001);
+        tween('defaultPlayerStrumX1r',cpuStrums.members[1],{x:230+(Math.sin(currentBeat/3+0.2)*50)},0.001);
+        tween('defaultPlayerStrumX2r',cpuStrums.members[2],{x:340+(Math.sin(currentBeat/3+0.3)*50)},0.001);
+        tween('defaultPlayerStrumX3r',cpuStrums.members[3],{x:450+(Math.sin(currentBeat/3+0.4)*50)},0.001);
+        tween('defaultPlayerStrumX0rr',playerStrums.members[0],{x:720+(Math.sin(currentBeat/3+0.1)*-50)},0.001);
+        tween('defaultPlayerStrumX1rr',playerStrums.members[1],{x:830+(Math.sin(currentBeat/3+0.2)*-50)},0.001);
+        tween('defaultPlayerStrumX2rr',playerStrums.members[2],{x:940+(Math.sin(currentBeat/3+0.3)*-50)},0.001);
+        tween('defaultPlayerStrumX3rr',playerStrums.members[3],{x:1050+(Math.sin(currentBeat/3+0.4)*-50)},0.001);
+    }
+    if (daTingY){
+        tween('defaultPlayerStrumY4r',cpuStrums.members[0],{y:50+(Math.cos(currentBeat/2+0.2)*25)},0.001);
+        tween('defaultPlayerStrumY5r',cpuStrums.members[1],{y:50+(Math.cos(currentBeat/2+0.4)*25)},0.001);
+        tween('defaultPlayerStrumY6r',cpuStrums.members[2],{y:50+(Math.cos(currentBeat/2+0.6)*25)},0.001);
+        tween('defaultPlayerStrumY7r',cpuStrums.members[3],{y:50+(Math.cos(currentBeat/2+0.8)*25)},0.001);
+        tween('defaultPlayerStrumY4rr',playerStrums.members[0],{y:50+(Math.cos(currentBeat/2+0.2)*-25)},0.001);
+        tween('defaultPlayerStrumY5rr',playerStrums.members[1],{y:50+(Math.cos(currentBeat/2+0.4)*-25)},0.001);
+        tween('defaultPlayerStrumY6rr',playerStrums.members[2],{y:50+(Math.cos(currentBeat/2+0.6)*-25)},0.001);
+        tween('defaultPlayerStrumY7rr',playerStrums.members[3],{y:50+(Math.cos(currentBeat/2+0.8)*-25)},0.001);
+    }
+    if (daTingYSmall){
+        tween('defaultPlayerStrumY4r',cpuStrums.members[0],{y:50+(Math.cos(currentBeat/6+0.5)*25)},0.001);
+        tween('defaultPlayerStrumY5r',cpuStrums.members[1],{y:50+(Math.cos(currentBeat/6+1)*25)},0.001);
+        tween('defaultPlayerStrumY6r',cpuStrums.members[2],{y:50+(Math.cos(currentBeat/6+1.5)*25)},0.001);
+        tween('defaultPlayerStrumY7r',cpuStrums.members[3],{y:50+(Math.cos(currentBeat/6+2)*25)},0.001);
+        tween('defaultPlayerStrumY4rr',playerStrums.members[0],{y:50+(Math.cos(currentBeat/6+0.5)*-25)},0.001);
+        tween('defaultPlayerStrumY5rr',playerStrums.members[1],{y:50+(Math.cos(currentBeat/6+1)*-25)},0.001);
+        tween('defaultPlayerStrumY6rr',playerStrums.members[2],{y:50+(Math.cos(currentBeat/6+1.5)*-25)},0.001);
+        tween('defaultPlayerStrumY7rr',playerStrums.members[3],{y:50+(Math.cos(currentBeat/6+2)*-25)},0.001);
+    }
+
+    /*hind.y=(boyfriend.y+200);
+    noskin.y=(boyfriend.y-850);
+
+    stone1.x=(boyfriend.x-800);
+    stone2.x=(boyfriend.x-500);
+    stone3.x=(boyfriend.x-100);
+    stone1.y=(boyfriend.y+150);
+    stone2.y=(boyfriend.y+350);
+    stone3.y=(boyfriend.y+100);
+
+    penty.angle-=pentyVar;
+    stone1.angle-=0.05;
+    stone2.angle+=0.066;
+    stone3.angle-=0.058;
+
+    building1.angle=0 - 20 * Math.cos((currentBeat2*0.33)*Math.PI);
+    building2.angle=0 - -30 * Math.cos((currentBeat2*0.44)*Math.PI);
+    building3.angle=0 - 15 * Math.cos((currentBeat2*0.55)*Math.PI);
+
+    if (curBeat >= 108 && curBeat <= 316){
+        simge1.alpha=health/0.8;
+        if (health <= 2 && health > 1.75) tween('alphap',simge2,{alpha:0.125},0.1);
+        if (health <= 1.75 && health > 1.5) tween('alphap',simge2,{alpha:0.25},0.1);
+        if (health <= 1.5 && health > 1.25) tween('alphap',simge2,{alpha:0.375},0.1);
+        if (health <= 1.25 && health > 1) tween('alphap',simge2,{alpha:0.5},0.1);
+        if (health <= 1 && health > 0.75) tween('alphap',simge2,{alpha:0.625},0.1);
+        if (health <= 0.75 && health > 0.5) tween('alphap',simge2,{alpha:0.75},0.1);
+        if (health <= 0.5 && health > 0.25) tween('alphap',simge2,{alpha:0.875},0.1);
+        if (health <= 0.25) tween('alphap',simge2,{alpha:1},0.1);
+    }
+
+    if (curBeat == 316) simge1.visible=simge2.visible=false;
+    if (curBeat == 548) simge1.visible=simge2.visible=false;
+
+    if (curBeat >= 448){
+        simge1.alpha=health/0.8;
+        if (health <= 2 && health > 1.75) tween('alphap',simge2,{alpha:0.125},0.1);
+        if (health <= 1.75 && health > 1.5) tween('alphap',simge2,{alpha:0.25},0.1);
+        if (health <= 1.5 && health > 1.25) tween('alphap',simge2,{alpha:0.375},0.1);
+        if (health <= 1.25 && health > 1) tween('alphap',simge2,{alpha:0.5},0.1);
+        if (health <= 1 && health > 0.75) tween('alphap',simge2,{alpha:0.625},0.1);
+        if (health <= 0.75 && health > 0.5) tween('alphap',simge2,{alpha:0.75},0.1);
+        if (health <= 0.5 && health > 0.25) tween('alphap',simge2,{alpha:0.875},0.1);
+        if (health <= 0.25) tween('alphap',simge2,{alpha:1},0.1);
+    }*/
+
+    if (curBeat >= 36 && curBeat < 548){
+        if (health > 1.6){owo = 0.1*0.9; owo2 = 0.2*0.9;}
+        if (health <= 1.6 && health > 1.2){owo = 0.3*0.9; owo2 = 0.4*0.9;}
+        if (health <= 1.2 && health > 0.8){owo = 0.5*0.9; owo2 = 0.6*0.9;}
+        if (health <= 0.8 && health > 0.4){owo = 0.7*0.9; owo2 = 0.8*0.9;}
+        if (health <= 0.4){owo = 0.9*0.9; owo2 = 1*0.9;}
+    }
+
+    if (curBeat == 40 && health > 0.01) health/=1.015;
+
+    /*if (curBeat <= 464){
+        island.x=dad.x - 300;
+        island.y=dad.y + 375;
+        island2.x=boyfriend.x + -125;
+        island2.y=boyfriend.y + 200;
+    }
+
+    if (curBeat >= 108){
+        tree1.angle=0 - 13 * Math.cos((currentBeat2*0.39)*Math.PI);
+        tree2.angle=0 - -19 * Math.cos((currentBeat2*0.22)*Math.PI);
+        tree3.angle=0 - 17 * Math.cos((currentBeat2*0.25)*Math.PI);
+        tree4.angle=0 - 15 * Math.cos((currentBeat2*0.48)*Math.PI);
+    }*/
+    if (curBeat >= 108 && curBeat < 172){
+        dad.angle=0 - 5 * Math.cos((currentBeat2*0.25)*Math.PI);
+        boyfriend.angle+=0.5;
+        camGame.shake(0.0075, 0.05);
+        camHUD.shake(0.004, 0.05);
+    }
+    if (curBeat >= 172 && curBeat < 220){
+        camGame.shake(0.0025, 0.05);
+        camHUD.shake(0.001, 0.05);
+    }
+    if (curBeat >= 220 && curBeat < 234){
+        camGame.shake(0.00125, 0.05);
+        camHUD.shake(0.0005, 0.05);
+    }
+    if (curBeat >= 234 && curBeat < 300){
+        camGame.shake(0.0025, 0.05);
+        camHUD.shake(0.001, 0.05);
+    }
+    if (curBeat >= 300 && curBeat < 444){
+        camGame.shake(0.000625, 0.05);
+        camHUD.shake(0.00025, 0.05);
+    }
+    if (curBeat >= 448 && curBeat < 480){
+        camGame.shake(0.005, 0.05);
+        camHUD.shake(0.002, 0.05);
+    }
+    if (curBeat >= 480 && curBeat < 544){
+        dad.angle=0 - 5 * Math.cos((currentBeat2*0.25)*Math.PI);
+        boyfriend.angle+=0.5;
+    }
+    if (curBeat >= 480 && curBeat < 556){
+        camGame.shake(0.0075, 0.05);
+        camHUD.shake(0.004, 0.05);
+    }
+
+    //if (kamehameha.y >= -2500) kamehameha.y=-3250;
+
     if (curBeat >= 40 && curBeat < 41 && pentyVar > 0.1) pentyVar -= 0.005;
     if (curBeat == 104 && curBeat < 105 && pentyVar < 2) pentyVar += 0.005;
     if (curBeat == 172 && curBeat < 173 && pentyVar > 0.25) pentyVar -= 0.005;

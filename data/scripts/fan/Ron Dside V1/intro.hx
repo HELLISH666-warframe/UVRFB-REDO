@@ -1,10 +1,11 @@
 public var three,two,one,go;
+var prefix = 'fan/Ron Dside V1/';
 
 function create(){
-    three = new FlxSprite(-750,-250).loadGraphic(Paths.image('Ron Dside/new3'));
-    two = new FlxSprite(-750,-250).loadGraphic(Paths.image('Ron Dside/new2'));
-    one = new FlxSprite(-750,-250).loadGraphic(Paths.image('Ron Dside/new1'));
-    go = new FlxSprite(-750,-250).loadGraphic(Paths.image('Ron Dside/newgo'));
+    three = new FlxSprite(-750,-250).loadGraphic(Paths.image(prefix+'new3'));
+    two = new FlxSprite(-750,-250).loadGraphic(Paths.image(prefix+'new2'));
+    one = new FlxSprite(-750,-250).loadGraphic(Paths.image(prefix+'new1'));
+    go = new FlxSprite(-750,-250).loadGraphic(Paths.image(prefix+'newgo'));
 
     for(i in [three,two,one,go]){
         insert(5,i);
@@ -17,7 +18,7 @@ function create(){
 
 function onCountdown(e){
     if(e.swagCounter > 3)return;
-    e.soundPath='fan/Ron Dside/intro'+[3,2,1,'Go'][e.swagCounter];
+    e.soundPath=prefix+'intro'+[3,2,1,'Go'][e.swagCounter];
     e.spritePath=null;
     switch(e.swagCounter){
         case 0: tween('hehe',three, {alpha:0}, 0.25);

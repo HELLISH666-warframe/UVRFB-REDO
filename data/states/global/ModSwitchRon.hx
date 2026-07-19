@@ -33,7 +33,7 @@ function create() {
 
 	for (i in 0...mods.length) {
 		var text = new FlxText(0,0,100,mods[i] ==null ?"disableMods": mods[i],20);
-		text.setFormat(Paths.font("w95.otf"),17,FlxColor.BLACK,'center');
+		text.setFormat(Paths.font("V3/w95.otf"),17,FlxColor.BLACK,'center');
 		text.ID = i;
 		text.x =40+ 120 * (text.ID % 10);
 		text.y = 140 +140 * Math.floor(text.ID / 10);
@@ -57,7 +57,7 @@ function create() {
 	hitbox.height=60;
 
 	var objectsText = new FlxText(-20,700,100,mods.length+' object(s)',453);
-	objectsText.setFormat(Paths.font("w95.otf"),15,FlxColor.BLACK,'right');
+	objectsText.setFormat(Paths.font("V3/w95.otf"),15,FlxColor.BLACK,'right');
 	add(objectsText).camera=subCam;
 
 	if (FlxG.save.data.crt) subCam.addShader(cunvrehgu = new CustomShader("V3/fake CRT"));

@@ -27,6 +27,7 @@ function create() {
 	text.scrollFactor.set();
 	add(text);
 	changeSelection(0);
+	CoolUtil.playMenuSong(true);
 }
 function update(elapsed:Float) {time += elapsed;
     ground.color = bg.color;

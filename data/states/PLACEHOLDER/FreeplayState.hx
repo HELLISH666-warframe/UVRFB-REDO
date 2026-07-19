@@ -142,8 +142,6 @@ function create() {
 
 	add(scoreText);
 
-	add(fanBG = new FlxSprite(-380,600).makeSolid(FlxG.width,40,0xFF000000)).alpha = 0.6;
-	fanBG.camera=camText;
 	fanmade_text.setFormat(Paths.font("V3/w95.otf"), 48, FlxColor.RED,'left', FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 	add(fanmade_text).camera=camText;
 	fanmade_text.borderSize=1.5;
@@ -286,7 +284,6 @@ function shadering(REAL:Int,?string:String=""){
 	if(fanmade_text.text!=songs[curSelPFP].version)fanmade_text.alpha=0;
 	FlxTween.tween(fanmade_text, {alpha:1}, 0.2, {ease: FlxEase.quintIn});
 	fanmade_text.text=songs[curSelPFP].version;
-	fanBG.scale.x=fanmade_text.width;
 	for(i in [bar,portrait]) {
 		FlxTween.cancelTweensOf(i,['alpha']);
 		FlxTween.tween(i, {alpha:cursong.port=='none'?0.2:1}, 0.5, {ease: FlxEase.quadIn});

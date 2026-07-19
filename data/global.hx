@@ -11,10 +11,12 @@ function preStateSwitch() {
         case 'V3':redirectStates = [WarningState=>"V3/NoticeScreen",TitleState => "V3/TitleState",
         MainMenuState => "V3/DesktopState",StoryMenuState => "V3/DesktopState",FreeplayState => "V3/FreeplayState",
         CreditsMain => "V3/CreditsRon",GitarooPause => "V3/MasterFreeplayState"];
+        Flags.DEFAULT_MENU_MUSIC='VS Ron/freakyMenu';
         case 'DEV':redirectStates = [
         TitleState => "PLACEHOLDER/MasterFreeplayState",MainMenuState => "PLACEHOLDER/MasterFreeplayState",
         StoryMenuState => "PLACEHOLDER/MasterFreeplayState",GitarooPause => "PLACEHOLDER/MasterFreeplayState",
         FreeplayState => "PLACEHOLDER/FreeplayState"];
+        Flags.DEFAULT_MENU_MUSIC='VS Ron/freakyMenu';
     }
     for (redirectState in redirectStates.keys()) 
         if (Std.isOfType(FlxG.game._requestedState, redirectState)) 

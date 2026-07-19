@@ -61,5 +61,80 @@ public function scaleObject(object,x,y){
 	obj.updateHitbox();
 }
 
-public function makeAnimatedFlxSprite(name){
+public function makeAnimatedFlxSprite(tag,image,x,y){
+    resetSpriteTag(tag);
+
+    spr = new FlxSprite(x,y);
+    spr.antialiasing = modSave.globalAntialiasing;
+    spr.frames = Paths.getSparrowAtlas(image);
+    sprMap.set(tag, spr);
+}
+
+public function addAnimationByPrefix(obj,name,prefix,framerate,loop){
+    framerate??=24;
+    loop??=true;
+    if(!sprMap.exists(obj))return;
+    cock = sprMap.get(obj);
+    cock.animation.addByPrefix(name, prefix, framerate, loop);
+    if(cock.animation.curAnim == null) cock.animation.play(name, true);
+}
+
+public function setPropLua(thg,val){
+    spt = thg.split('.');
+    if(!sprMap.exists(spt[0]))return;
+    if(spt.length>2){
+        Reflect.setField(Reflect.getProperty(sprMap.get(spt[0]),spt[1]),spt[2],val);
+    }else{
+        Reflect.setField(sprMap.get(spt[0]),spt[1],val);
+    }
+}
+
+public function getPropLua(thg){
+    spt = thg.split('.');
+    if(!sprMap.exists(spt[0]))return;
+    if(spt.length>2){
+        return Reflect.getProperty(Reflect.getProperty(sprMap.get(spt[0]),spt[1]),spt[2]);
+    }else{
+        return Reflect.getProperty(sprMap.get(spt[0]),spt[1]);
+    }
+}
+
+public function resetSpriteTag(tag:String) {
+	if (!sprMap.exists(tag)) return;
+	var pee = sprMap.get(tag);
+	pee.kill();
+	if(pee.exists) remove(pee, true);
+
+	pee.destroy();
+	sprMap.remove(tag);
+}
+
+public function setGraphicSizeL(object,x,y,?updateHitbox) {
+    updateHitbox??=true;
+    obj=object;
+
+    obj.setGraphicSize(x, y);
+    if (updateHitbox) obj.updateHitbox();
+}
+
+public function playAnimL(obj,name,?forced,?reverse,?startFrame) {
+    if (!sprMap.exists(obj)) return;
+    forced??=false;
+    reverse??=false;
+    startFrame??=0;
+
+    sprMap.get(obj).animation.play(name,forced, reverse, startFrame);
+}
+
+public function removeFlxSprite(tag,destroy) {
+    destroy??=true;
+    if (!sprMap.exists(tag)) return;
+
+    var pee = sprMap.get(tag);
+    if (destroy) pee.kill();
+    remove(pee, true);
+    if (destroy) {
+		pee.destroy();
+		sprMap.remove(tag);
+	}
 }

@@ -18,7 +18,7 @@ var oldCam = [0,0];
 function postUpdate(){
    if (followchars && startCam){
       anim = strumLines.members[0].characters[0].getAnimName();
-      if (curCameraTarget ==1 && curCameraTarget != 2) anim = strumLines.members[1].characters[0].getAnimName();
+      if (curCameraTarget==1 && curCameraTarget!=2) anim = strumLines.members[1].characters[0].getAnimName();
       if (curCameraTarget == 2) anim = strumLines.members[2].characters[0].getAnimName();
 
       if (startsWith(anim, "singLEFT")){camOffY = 0; camOffX = 0 - Intensity;}

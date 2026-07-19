@@ -2,14 +2,14 @@
 	"displayName": "techne",
 	"difficulties": ["stained"],
 	"bpm": 150,
-	"port": "fan/azer/techne",
 	"color": "#7DCFF5",
-	"scripts":"fan/Ron Dside",
-	"version": "Ron Dside",
+	"icon": "fan/Ron Dside V1/tech",
+	"coopAllowed": false,
+	"opponentModeAllowed": false,
+	"port": "fan/azer/techne",
+	"scripts":"fan/Ron Dside V1",
+	"version": "Ron Dside V1",
 	"normalport": true,
 	"engine":"Psike",
-	"icon": "fan/Ron Dside/tech",
-	"modlink": "https://gamebanana.com/mods/530993",
-	"coopAllowed": false,
-	"opponentModeAllowed": false
+	"modlink": "https://gamebanana.com/mods/530993"
 }
