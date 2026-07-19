@@ -14,9 +14,9 @@ function onSongStart(){
 }
 
 function beatHit(){
+    if(curBeat==448||curBeat==316)dad.y=fixed;
     switch(curBeat){
         case 315:fixed = dad.y-50;
-        case 316|448:dad.y=fixed;
         case 447:fixed = dad.y+50;
         case 464:for(i in 0...strumLineNotes.length)tween('NoteMoveY'+i,strumLineNotes[i],{y:350},6,'linear');
         case 32:tween('byeDead',dead, {alpha:1}, 0.5,'quadInOut');
@@ -259,7 +259,7 @@ function beatHit(){
         case 236:daTingX = true;
         case 251|283:tween('dramaCam3',camGame, {zoom:0.7}, 0.75,'quadInOut');
         defaultCamZoom=0.7;
-        case 267:ween('dramaCam3',camGame, {zoom:0.6}, 0.75,'quadInOut');
+        case 267:tween('dramaCam3',camGame, {zoom:0.6}, 0.75,'quadInOut');
         defaultCamZoom=0.6;
         case 300:daTingX = false;
         daTingY = false;
@@ -327,7 +327,7 @@ function beatHit(){
         tween('dramaCam',camGame, {zoom:0.8}, 1.75,'quadOut');
         defaultCamZoom=0.8;
         tween('woah',hind, {alpha:0.5}, 0.5,'quadOut');
-        tween('woah2',noteskin, {alpha:0.5}, 0.5,'quadOut');
+        tween('woah2',noskin, {alpha:0.5}, 0.5,'quadOut');
         case 381:tween('woah',hind, {alpha:1}, 0.5,'quadIn');
         tween('woah2',noskin, {alpha:1}, 0.5,'quadIn');
         case 410:tween('dramaCam',camGame, {zoom:0.7}, 1.75,'quadInOut');
@@ -520,7 +520,7 @@ function beatHit(){
         if (curBeat %2 == 0){
             tween('boing',topBar, {y:-200}, 0.5,'quadOut');
             tween('boing2',bottomBar, {y:600}, 0.5,'quadOut');
-            tween('GETBACKDEMONBACK',camHUD, {zoomy:1}, 0.5,'quadOut');
+            tween('GETBACKDEMONBACK',camHUD, {zoom:1}, 0.5,'quadOut');
             topBar.y=-180;
             bottomBar.y=580;
             camHUD.zoom=0.95;
@@ -550,7 +550,7 @@ function update(elapsed:Float){
     var currentBeat = (Conductor.songPosition/100)/(Conductor.bpm/170);
     currentBeat2 = (Conductor.songPosition / 1000) * (PlayState.SONG.meta.bpm / 170);
 
-    //canvas.y=boyfriend.y-550;
+    canvas.y=boyfriend.y-550;
 
     if (curBeat >= 380 && curBeat <= 444){  
         tween('defaultPlayerStrumX0rft',cpuStrums.members[0],{x:120+(Math.sin(currentBeat/8+0.1)*50)},0.25);
@@ -644,13 +644,175 @@ function update(elapsed:Float){
             tween('defaultPlayerStrumX7rf',playerStrums.members[3],{x:420+(Math.sin(currentBeat/3+0.1)*-450)},0.25);
         }
     }
+    if (curBeat >= 480 && curBeat < 548){
+        if (curBeat >= 480 && curBeat < 484){
+            tween('defaultPlayerStrumX0rf',strumLineNotes[0],{x:750+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+1)*450)},0.25);
+            tween('defaultPlayerStrumX1rf',strumLineNotes[1],{x:640+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+2)*450)},0.25);
+            tween('defaultPlayerStrumX2rf',strumLineNotes[2],{x:530+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+3)*450)},0.25);
+            tween('defaultPlayerStrumX3rf',strumLineNotes[3],{x:420+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+4)*450)},0.25);
+            tween('defaultPlayerStrumX4rf',strumLineNotes[4],{x:420+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+1)*-450)},0.25);
+            tween('defaultPlayerStrumX5rf',strumLineNotes[5],{x:530+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+2)*-450)},0.25);
+            tween('defaultPlayerStrumX6rf',strumLineNotes[6],{x:640+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+3)*-450)},0.25);
+            tween('defaultPlayerStrumX7rf',strumLineNotes[7],{x:750+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+4)*-450)},0.25);
+        }
+        if (curBeat >= 484 && curBeat < 488){
+            tween('defaultPlayerStrumX0rf',strumLineNotes[0],{x:420+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+1)*450)},0.25);
+            tween('defaultPlayerStrumX1rf',strumLineNotes[1],{x:530+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+2)*450)},0.25);
+            tween('defaultPlayerStrumX2rf',strumLineNotes[2],{x:640+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+3)*450)},0.25);
+            tween('defaultPlayerStrumX3rf',strumLineNotes[3],{x:750+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+4)*450)},0.25);
+            tween('defaultPlayerStrumX4rf',strumLineNotes[4],{x:420+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+1)*-450)},0.25);
+            tween('defaultPlayerStrumX5rf',strumLineNotes[5],{x:530+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+2)*-450)},0.25);
+            tween('defaultPlayerStrumX6rf',strumLineNotes[6],{x:640+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+3)*-450)},0.25);
+            tween('defaultPlayerStrumX7rf',strumLineNotes[7],{x:750+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+4)*-450)},0.25);
+        }
+        if (curBeat >= 488 && curBeat < 492){
+            tween('defaultPlayerStrumX0rf',strumLineNotes[0],{x:750+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+1)*450)},0.25);
+            tween('defaultPlayerStrumX1rf',strumLineNotes[1],{x:640+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+2)*450)},0.25);
+            tween('defaultPlayerStrumX2rf',strumLineNotes[2],{x:530+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+3)*450)},0.25);
+            tween('defaultPlayerStrumX3rf',strumLineNotes[3],{x:420+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+4)*450)},0.25);
+            tween('defaultPlayerStrumX4rf',strumLineNotes[4],{x:420+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+1)*-450)},0.25);
+            tween('defaultPlayerStrumX5rf',strumLineNotes[5],{x:530+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+2)*-450)},0.25);
+            tween('defaultPlayerStrumX6rf',strumLineNotes[6],{x:640+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+3)*-450)},0.25);
+            tween('defaultPlayerStrumX7rf',strumLineNotes[7],{x:750+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+4)*-450)},0.25);
+        }
+        if (curBeat >= 492 && curBeat < 496){    
+            tween('defaultPlayerStrumX0rf',strumLineNotes[0],{x:420+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+1)*450)},0.25);
+            tween('defaultPlayerStrumX1rf',strumLineNotes[1],{x:530+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+2)*450)},0.25);
+            tween('defaultPlayerStrumX2rf',strumLineNotes[2],{x:640+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+3)*450)},0.25);
+            tween('defaultPlayerStrumX3rf',strumLineNotes[3],{x:750+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+4)*450)},0.25);
+            tween('defaultPlayerStrumX4rf',strumLineNotes[4],{x:420+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+1)*-450)},0.25);
+            tween('defaultPlayerStrumX5rf',strumLineNotes[5],{x:530+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+2)*-450)},0.25);
+            tween('defaultPlayerStrumX6rf',strumLineNotes[6],{x:640+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+3)*-450)},0.25);
+            tween('defaultPlayerStrumX7rf',strumLineNotes[7],{x:750+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+4)*-450)},0.25);
+        }
+        if (curBeat >= 496 && curBeat < 500){    
+            tween('defaultPlayerStrumX0rf',strumLineNotes[0],{x:750+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+1)*450)},0.25);
+            tween('defaultPlayerStrumX1rf',strumLineNotes[1],{x:640+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+2)*450)},0.25);
+            tween('defaultPlayerStrumX2rf',strumLineNotes[2],{x:530+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+3)*450)},0.25);
+            tween('defaultPlayerStrumX3rf',strumLineNotes[3],{x:420+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+4)*450)},0.25);
+            tween('defaultPlayerStrumX4rf',strumLineNotes[4],{x:420+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+1)*-450)},0.25);
+            tween('defaultPlayerStrumX5rf',strumLineNotes[5],{x:530+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+2)*-450)},0.25);
+            tween('defaultPlayerStrumX6rf',strumLineNotes[6],{x:640+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+3)*-450)},0.25);
+            tween('defaultPlayerStrumX7rf',strumLineNotes[7],{x:750+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+4)*-450)},0.25);
+        }
+        if (curBeat >= 500 && curBeat < 504){
+            tween('defaultPlayerStrumX0rf',strumLineNotes[0],{x:420+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+1)*450)},0.25);
+            tween('defaultPlayerStrumX1rf',strumLineNotes[1],{x:530+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+2)*450)},0.25);
+            tween('defaultPlayerStrumX2rf',strumLineNotes[2],{x:640+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+3)*450)},0.25);
+            tween('defaultPlayerStrumX3rf',strumLineNotes[3],{x:750+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+4)*450)},0.25);
+            tween('defaultPlayerStrumX4rf',strumLineNotes[4],{x:420+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+1)*-450)},0.25);
+            tween('defaultPlayerStrumX5rf',strumLineNotes[5],{x:530+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+2)*-450)},0.25);
+            tween('defaultPlayerStrumX6rf',strumLineNotes[6],{x:640+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+3)*-450)},0.25);
+            tween('defaultPlayerStrumX7rf',strumLineNotes[7],{x:750+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+4)*-450)},0.25);
+        }
+        if (curBeat >= 504 && curBeat < 508){
+            tween('defaultPlayerStrumX0rf',strumLineNotes[0],{x:750+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+1)*450)},0.25);
+            tween('defaultPlayerStrumX1rf',strumLineNotes[1],{x:640+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+2)*450)},0.25);
+            tween('defaultPlayerStrumX2rf',strumLineNotes[2],{x:530+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+3)*450)},0.25);
+            tween('defaultPlayerStrumX3rf',strumLineNotes[3],{x:420+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+4)*450)},0.25);
+            tween('defaultPlayerStrumX4rf',strumLineNotes[4],{x:420+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+1)*-450)},0.25);
+            tween('defaultPlayerStrumX5rf',strumLineNotes[5],{x:530+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+2)*-450)},0.25);
+            tween('defaultPlayerStrumX6rf',strumLineNotes[6],{x:640+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+3)*-450)},0.25);
+            tween('defaultPlayerStrumX7rf',strumLineNotes[7],{x:750+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+4)*-450)},0.25);
+        }
+        if (curBeat >= 508 && curBeat < 512){
+            tween('defaultPlayerStrumX0rf',strumLineNotes[0],{x:420+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+1)*450)},0.25);
+            tween('defaultPlayerStrumX1rf',strumLineNotes[1],{x:530+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+2)*450)},0.25);
+            tween('defaultPlayerStrumX2rf',strumLineNotes[2],{x:640+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+3)*450)},0.25);
+            tween('defaultPlayerStrumX3rf',strumLineNotes[3],{x:750+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+4)*450)},0.25);
+            tween('defaultPlayerStrumX4rf',strumLineNotes[4],{x:420+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+1)*-450)},0.25);
+            tween('defaultPlayerStrumX5rf',strumLineNotes[5],{x:530+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+2)*-450)},0.25);
+            tween('defaultPlayerStrumX6rf',strumLineNotes[6],{x:640+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+3)*-450)},0.25);
+            tween('defaultPlayerStrumX7rf',strumLineNotes[7],{x:750+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+4)*-450)},0.25);
+        }
+        if (curBeat >= 512 && curBeat < 516){
+            tween('defaultPlayerStrumX0rf',strumLineNotes[0],{x:750+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+1)*450)},0.25);
+            tween('defaultPlayerStrumX1rf',strumLineNotes[1],{x:640+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+2)*450)},0.25);
+            tween('defaultPlayerStrumX2rf',strumLineNotes[2],{x:530+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+3)*450)},0.25);
+            tween('defaultPlayerStrumX3rf',strumLineNotes[3],{x:420+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+4)*450)},0.25);
+            tween('defaultPlayerStrumX4rf',strumLineNotes[4],{x:420+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+1)*-450)},0.25);
+            tween('defaultPlayerStrumX5rf',strumLineNotes[5],{x:530+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+2)*-450)},0.25);
+            tween('defaultPlayerStrumX6rf',strumLineNotes[6],{x:640+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+3)*-450)},0.25);
+            tween('defaultPlayerStrumX7rf',strumLineNotes[7],{x:750+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+4)*-450)},0.25);
+        }
+        if (curBeat >= 516 && curBeat < 520){
+            tween('defaultPlayerStrumX0rf',strumLineNotes[0],{x:420+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+1)*450)},0.25);
+            tween('defaultPlayerStrumX1rf',strumLineNotes[1],{x:530+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+2)*450)},0.25);
+            tween('defaultPlayerStrumX2rf',strumLineNotes[2],{x:640+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+3)*450)},0.25);
+            tween('defaultPlayerStrumX3rf',strumLineNotes[3],{x:750+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+4)*450)},0.25);
+            tween('defaultPlayerStrumX4rf',strumLineNotes[4],{x:420+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+1)*-450)},0.25);
+            tween('defaultPlayerStrumX5rf',strumLineNotes[5],{x:530+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+2)*-450)},0.25);
+            tween('defaultPlayerStrumX6rf',strumLineNotes[6],{x:640+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+3)*-450)},0.25);
+            tween('defaultPlayerStrumX7rf',strumLineNotes[7],{x:750+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+4)*-450)},0.25);
+        }
+        if (curBeat >= 520 && curBeat < 524){
+            tween('defaultPlayerStrumX0rf',strumLineNotes[0],{x:750+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+1)*450)},0.25);
+            tween('defaultPlayerStrumX1rf',strumLineNotes[1],{x:640+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+2)*450)},0.25);
+            tween('defaultPlayerStrumX2rf',strumLineNotes[2],{x:530+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+3)*450)},0.25);
+            tween('defaultPlayerStrumX3rf',strumLineNotes[3],{x:420+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+4)*450)},0.25);
+            tween('defaultPlayerStrumX4rf',strumLineNotes[4],{x:420+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+1)*-450)},0.25);
+            tween('defaultPlayerStrumX5rf',strumLineNotes[5],{x:530+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+2)*-450)},0.25);
+            tween('defaultPlayerStrumX6rf',strumLineNotes[6],{x:640+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+3)*-450)},0.25);
+            tween('defaultPlayerStrumX7rf',strumLineNotes[7],{x:750+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+4)*-450)},0.25);
+        }
+        if (curBeat >= 524 && curBeat < 528){    
+            tween('defaultPlayerStrumX0rf',strumLineNotes[0],{x:420+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+1)*450)},0.25);
+            tween('defaultPlayerStrumX1rf',strumLineNotes[1],{x:530+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+2)*450)},0.25);
+            tween('defaultPlayerStrumX2rf',strumLineNotes[2],{x:640+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+3)*450)},0.25);
+            tween('defaultPlayerStrumX3rf',strumLineNotes[3],{x:750+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+4)*450)},0.25);
+            tween('defaultPlayerStrumX4rf',strumLineNotes[4],{x:420+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+1)*-450)},0.25);
+            tween('defaultPlayerStrumX5rf',strumLineNotes[5],{x:530+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+2)*-450)},0.25);
+            tween('defaultPlayerStrumX6rf',strumLineNotes[6],{x:640+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+3)*-450)},0.25);
+            tween('defaultPlayerStrumX7rf',strumLineNotes[7],{x:750+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+4)*-450)},0.25);
+        }
+        if (curBeat >= 528 && curBeat < 532){
+            tween('defaultPlayerStrumX0rf',strumLineNotes[0],{x:750+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+1)*450)},0.25);
+            tween('defaultPlayerStrumX1rf',strumLineNotes[1],{x:640+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+2)*450)},0.25);
+            tween('defaultPlayerStrumX2rf',strumLineNotes[2],{x:530+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+3)*450)},0.25);
+            tween('defaultPlayerStrumX3rf',strumLineNotes[3],{x:420+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+4)*450)},0.25);
+            tween('defaultPlayerStrumX4rf',strumLineNotes[4],{x:420+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+1)*-450)},0.25);
+            tween('defaultPlayerStrumX5rf',strumLineNotes[5],{x:530+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+2)*-450)},0.25);
+            tween('defaultPlayerStrumX6rf',strumLineNotes[6],{x:640+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+3)*-450)},0.25);
+            tween('defaultPlayerStrumX7rf',strumLineNotes[7],{x:750+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+4)*-450)},0.25);
+        }
+        if (curBeat >= 532 && curBeat < 536){
+            tween('defaultPlayerStrumX0rf',strumLineNotes[0],{x:420+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+1)*450)},0.25);
+            tween('defaultPlayerStrumX1rf',strumLineNotes[1],{x:530+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+2)*450)},0.25);
+            tween('defaultPlayerStrumX2rf',strumLineNotes[2],{x:640+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+3)*450)},0.25);
+            tween('defaultPlayerStrumX3rf',strumLineNotes[3],{x:750+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+4)*450)},0.25);
+            tween('defaultPlayerStrumX4rf',strumLineNotes[4],{x:420+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+1)*-450)},0.25);
+            tween('defaultPlayerStrumX5rf',strumLineNotes[5],{x:530+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+2)*-450)},0.25);
+            tween('defaultPlayerStrumX6rf',strumLineNotes[6],{x:640+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+3)*-450)},0.25);
+            tween('defaultPlayerStrumX7rf',strumLineNotes[7],{x:750+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+4)*-450)},0.25);
+        }
+        if (curBeat >= 536 && curBeat < 540){
+            tween('defaultPlayerStrumX0rf',strumLineNotes[0],{x:750+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+1)*450)},0.25);
+            tween('defaultPlayerStrumX1rf',strumLineNotes[1],{x:640+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+2)*450)},0.25);
+            tween('defaultPlayerStrumX2rf',strumLineNotes[2],{x:530+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+3)*450)},0.25);
+            tween('defaultPlayerStrumX3rf',strumLineNotes[3],{x:420+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+4)*450)},0.25);
+            tween('defaultPlayerStrumX4rf',strumLineNotes[4],{x:420+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+1)*-450)},0.25);
+            tween('defaultPlayerStrumX5rf',strumLineNotes[5],{x:530+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+2)*-450)},0.25);
+            tween('defaultPlayerStrumX6rf',strumLineNotes[6],{x:640+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+3)*-450)},0.25);
+            tween('defaultPlayerStrumX7rf',strumLineNotes[7],{x:750+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5+4)*-450)},0.25);
+        }
+        if (curBeat >= 540 && curBeat < 548){
+            tween('defaultPlayerStrumX0rf',strumLineNotes[0],{x:420+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5)*250)},0.25);
+            tween('defaultPlayerStrumX1rf',strumLineNotes[1],{x:530+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5)*250)},0.25);
+            tween('defaultPlayerStrumX2rf',strumLineNotes[2],{x:640+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5)*250)},0.25);
+            tween('defaultPlayerStrumX3rf',strumLineNotes[3],{x:750+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5)*250)},0.25);
+            tween('defaultPlayerStrumX4rf',strumLineNotes[4],{x:420+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5)*-250)},0.25);
+            tween('defaultPlayerStrumX5rf',strumLineNotes[5],{x:530+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5)*-250)},0.25);
+            tween('defaultPlayerStrumX6rf',strumLineNotes[6],{x:640+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5)*-250)},0.25);
+            tween('defaultPlayerStrumX7rf',strumLineNotes[7],{x:750+FlxG.random.int(-40,40)+(Math.sin(currentBeat/2.5)*-250)},0.25);
+        }
+    }
 
     if (curBeat >= 176 && curBeat < 300){  
         camHUD.x=0 - -40 * Math.cos((currentBeat2*0.33)*Math.PI);
         camHUD.y=0 - -20 * Math.cos((currentBeat2*0.42)*Math.PI);
     }
 
-    //if (curBeat < 548) canvas.angle=0 - 18 * Math.cos((currentBeat2*0.36)*Math.PI);
+    if (curBeat < 548) canvas.angle=0 - 18 * Math.cos((currentBeat2*0.36)*Math.PI);
 
     if (hudAngle) camHUD.angle=0 - -15*yippee * Math.cos((currentBeat2*0.33)*Math.PI);
 
@@ -685,7 +847,7 @@ function update(elapsed:Float){
         tween('defaultPlayerStrumY7rr',playerStrums.members[3],{y:50+(Math.cos(currentBeat/6+2)*-25)},0.001);
     }
 
-    /*hind.y=(boyfriend.y+200);
+    hind.y=(boyfriend.y+200);
     noskin.y=(boyfriend.y-850);
 
     stone1.x=(boyfriend.x-800);
@@ -704,7 +866,7 @@ function update(elapsed:Float){
     building2.angle=0 - -30 * Math.cos((currentBeat2*0.44)*Math.PI);
     building3.angle=0 - 15 * Math.cos((currentBeat2*0.55)*Math.PI);
 
-    if (curBeat >= 108 && curBeat <= 316){
+    /*if (curBeat >= 108 && curBeat <= 316){
         simge1.alpha=health/0.8;
         if (health <= 2 && health > 1.75) tween('alphap',simge2,{alpha:0.125},0.1);
         if (health <= 1.75 && health > 1.5) tween('alphap',simge2,{alpha:0.25},0.1);
@@ -741,7 +903,7 @@ function update(elapsed:Float){
 
     if (curBeat == 40 && health > 0.01) health/=1.015;
 
-    /*if (curBeat <= 464){
+    if (curBeat <= 464){
         island.x=dad.x - 300;
         island.y=dad.y + 375;
         island2.x=boyfriend.x + -125;
@@ -753,7 +915,7 @@ function update(elapsed:Float){
         tree2.angle=0 - -19 * Math.cos((currentBeat2*0.22)*Math.PI);
         tree3.angle=0 - 17 * Math.cos((currentBeat2*0.25)*Math.PI);
         tree4.angle=0 - 15 * Math.cos((currentBeat2*0.48)*Math.PI);
-    }*/
+    }
     if (curBeat >= 108 && curBeat < 172){
         dad.angle=0 - 5 * Math.cos((currentBeat2*0.25)*Math.PI);
         boyfriend.angle+=0.5;
@@ -789,7 +951,7 @@ function update(elapsed:Float){
         camHUD.shake(0.004, 0.05);
     }
 
-    //if (kamehameha.y >= -2500) kamehameha.y=-3250;
+    if (kamehameha.y >= -2500) kamehameha.y=-3250;
 
     if (curBeat >= 40 && curBeat < 41 && pentyVar > 0.1) pentyVar -= 0.005;
     if (curBeat == 104 && curBeat < 105 && pentyVar < 2) pentyVar += 0.005;
@@ -1007,14 +1169,14 @@ function stepHit() {
             camHUD.x=-25;
         }
         if (curStep % 16 == 14){
-            tween('NoteAngle9',cpuStrums.members[0], {angle:0}, 0.5,'quadOut');
-            tween('NoteAngle10',cpuStrums.members[1], {angle:0}, 0.5,'quadOut');
-            tween('NoteAngle11',cpuStrums.members[2], {angle:0}, 0.5,'quadOut');
-            tween('NoteAngle12',cpuStrums.members[3], {angle:0}, 0.5,'quadOut');
-            tween('NoteAngle13',playerStrums.members[0], {angle:0}, 0.5,'quadOut');
-            tween('NoteAngle14',playerStrums.members[1], {angle:0}, 0.5,'quadOut');
-            tween('NoteAngle15',playerStrums.members[2], {angle:0}, 0.5,'quadOut');
-            tween('NoteAngle16',playerStrums.members[3], {angle:0}, 0.5,'quadOut');
+            tween('NoteAngle9',strumLineNotes[0],{angle:0},0.5,'quadOut');
+            tween('NoteAngle10',strumLineNotes[1],{angle:0},0.5,'quadOut');
+            tween('NoteAngle11',strumLineNotes[2],{angle:0},0.5,'quadOut');
+            tween('NoteAngle12',strumLineNotes[3],{angle:0},0.5,'quadOut');
+            tween('NoteAngle13',strumLineNotes[4],{angle:0},0.5,'quadOut');
+            tween('NoteAngle14',strumLineNotes[5],{angle:0},0.5,'quadOut');
+            tween('NoteAngle15',strumLineNotes[6],{angle:0},0.5,'quadOut');
+            tween('NoteAngle16',strumLineNotes[7],{angle:0},0.5,'quadOut');
             for(i in 0...2)strumLines.members[i].forEach((a) -> {a.angle=10;});
             tween('backOut',camHUD, {zoom:1}, 0.5,'expoOut');
             camHUD.zoom=1.025;

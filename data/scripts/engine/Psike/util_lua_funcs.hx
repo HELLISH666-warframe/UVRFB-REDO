@@ -73,8 +73,7 @@ public function makeAnimatedFlxSprite(tag,image,x,y){
 public function addAnimationByPrefix(obj,name,prefix,framerate,loop){
     framerate??=24;
     loop??=true;
-    if(!sprMap.exists(obj))return;
-    cock = sprMap.get(obj);
+    sprMap.exists(obj)?cock=sprMap.get(obj):cock=obj;
     cock.animation.addByPrefix(name, prefix, framerate, loop);
     if(cock.animation.curAnim == null) cock.animation.play(name, true);
 }

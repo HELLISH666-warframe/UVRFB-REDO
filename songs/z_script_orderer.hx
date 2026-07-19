@@ -5,6 +5,7 @@ import haxe.io.Path;
 
 for (file in Paths.getFolderContent("data/scripts/engine/"+PlayState.SONG.meta.engine)) importScript("data/scripts/engine/"+PlayState.SONG.meta.engine+"/"+file.substr(0,file.length-3));
 for (file in Paths.getFolderContent("data/scripts/"+PlayState.SONG.meta.scripts)) importScript("data/scripts/"+PlayState.SONG.meta.scripts+"/"+file.substr(0,file.length-3));
+for (file in Paths.getFolderContent("data/scripts/"+PlayState.SONG.meta.scripts+'/events')) importScript("data/scripts/"+PlayState.SONG.meta.scripts+"/events/"+file.substr(0,file.length-3));
 
 var oldScripts:Array<Script> = PlayState.instance.scripts.scripts;
 PlayState.instance.scripts.scripts = [];
@@ -34,6 +35,8 @@ for (script in oldScripts) {
             song_Scripts.push(script);
         case "data/scripts/engine/"+PlayState.SONG.meta.engine: engine_Scripts.push(script);
         case "data/scripts/"+PlayState.SONG.meta.scripts: mod_Scripts.push(script);
+        case "data/scripts/"+PlayState.SONG.meta.scripts+'/events':
+            event_Scripts.push(script);
         default: other_Scripts.push(script);
     }
     //for (file in Paths.getFolderContent("data/scripts/"+PlayState.SONG.meta.scripts)) importScript("data/scripts/"+PlayState.SONG.meta.scripts+file.substr(0,file.length-3));
