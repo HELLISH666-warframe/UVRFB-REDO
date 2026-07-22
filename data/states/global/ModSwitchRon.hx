@@ -1,4 +1,3 @@
-//Kinda like the UOCM one but uhhh kind like uhhhh like uhhhhhh you ... uhhhh
 import funkin.backend.assets.ModsFolder;
 import flixel.group.FlxTypedSpriteGroup;
 import flixel.util.FlxSort;
@@ -62,10 +61,6 @@ function create() {
 
 	if (FlxG.save.data.crt) subCam.addShader(cunvrehgu = new CustomShader("V3/fake CRT"));
 }
-import sys.FileSystem;
-import haxe.io.Bytes;
-import sys.io.File;
-public var onFile:(String, Bytes)->Void;
 function update(elapsed:Float) {
 	if (controls.BACK||(FlxG.mouse.overlaps(hitbox) && FlxG.mouse.pressed)) close();
 
@@ -95,7 +90,7 @@ function scrollCam(change:Int, force:Bool = false) {
 }
 
 function destroy() {
-	window.title="vs literally every fnf fan mod ever";
+	window.title="vs literally every SLOP fan PORT ever";
 	if (FlxG.save.data.crt) FlxG.camera.removeShader(cunvrehgu);
 	FlxG.cameras.remove(subCam);
 	FlxG.camera.bgColor = 0;

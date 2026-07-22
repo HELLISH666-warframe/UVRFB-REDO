@@ -4,12 +4,8 @@ public var bottomBar;
 
 function create(){
 	topBar = new FlxSprite(-11080,-420).makeSolid(4160,360,0xFF000000);
-	insert(0,topBar).camera=camHUD;
-	topBar.alpha=0;
-
 	bottomBar = new FlxSprite(12080,920).makeSolid(4160,360,0xFF000000);
-	insert(0,bottomBar).camera=camHUD;
-	bottomBar.alpha=0;
+	for(i in [topBar,bottomBar]){insert(0,i).camera=camHUD; i.alpha=0;}
 }
 
 function update(){

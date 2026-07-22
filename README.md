@@ -4,3 +4,5 @@
 [Vs Ron V3](https://gamebanana.com/mods/460273)
 [Ron Dside](https://gamebanana.com/mods/530993)
 [Vs Ron Extra Side](https://gamebanana.com/mods/540473)
+
+# WARNING, THIS CURRENTLY RUNS LIKE SHIT!!!

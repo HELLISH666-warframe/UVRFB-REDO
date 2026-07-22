@@ -1,14 +1,19 @@
 var prefix='fan/Ron Dside V1/';
 
+public var sadmoon;
+public var backcity;
 public var kamehameha;
 public var penty;
+public var frontcity;
 public var building1;
 public var building2;
 public var building3;
 public var tree3;
 public var tree4;
+public var backhill;
 public var tree1;
 public var tree2;
+public var fronthill;
 public var hind;
 public var foreskin;
 public var foreskinclean;
@@ -30,7 +35,19 @@ public var alivefake;
 public var deadfake;
 public var dead;
 
-function onCreate() {
+function postCreate() {
+	sadmoon = new FlxSprite(0,-1000).loadGraphic(Paths.image(prefix+'bgs/giggad/sadmoon'));
+	sadmoon.scrollFactor.set(0,0.02);
+	insert(0,sadmoon);
+	scaleObject(sadmoon,2.5,2.5);
+	sadmoon.screenCenter(FlxAxes.X);
+
+	backcity = new FlxSprite(0,-1300).loadGraphic(Paths.image(prefix+'bgs/giggad/backcity'));
+	backcity.scrollFactor.set(0.15,0.15);
+	insert(2,backcity);
+	scaleObject(backcity,2.5,2.5);
+	backcity.screenCenter(FlxAxes.X);
+
 	kamehameha = new FlxSprite(0,-3500).loadGraphic(Paths.image(prefix+'bgs/giggad/kamehameha'));
 	kamehameha.scrollFactor.set(0.175,0.175);
 	insert(4,kamehameha);
@@ -43,6 +60,12 @@ function onCreate() {
 	insert(5,penty);
 	scaleObject(penty,2.5,2.5);
 	penty.screenCenter(FlxAxes.X);
+
+	frontcity = new FlxSprite(0,-1100).loadGraphic(Paths.image(prefix+'bgs/giggad/frontcity'));
+	frontcity.scrollFactor.set(0.25,0.25);
+	insert(6,frontcity);
+	scaleObject(frontcity,2.5,2.5);
+	frontcity.screenCenter(FlxAxes.X);
 
 	building1 = new FlxSprite(-400,325).loadGraphic(Paths.image(prefix+'bgs/giggad/building1'));
 	building1.scrollFactor.set(0.4,0.4);
@@ -69,6 +92,12 @@ function onCreate() {
 	insert(11,tree4);
 	scaleObject(tree4,1,1);
 
+	backhill = new FlxSprite(0,0).loadGraphic(Paths.image(prefix+'bgs/giggad/backhill'));
+	backhill.scrollFactor.set(0.5,0.5);
+	insert(12,backhill);
+	scaleObject(backhill,2.5,2.5);
+	backhill.screenCenter(FlxAxes.X);
+
 	tree1 = new FlxSprite(-1000,-400).loadGraphic(Paths.image(prefix+'bgs/giggad/tree1'));
 	tree1.scrollFactor.set(0.8,0.8);
 	insert(13,tree1);
@@ -78,6 +107,12 @@ function onCreate() {
 	tree2.scrollFactor.set(0.8,0.8);
 	insert(14,tree2);
 	scaleObject(tree2,1,1);
+
+	fronthill = new FlxSprite(0,-100).loadGraphic(Paths.image(prefix+'bgs/giggad/fronthill'));
+	fronthill.scrollFactor.set(0.8,0.8);
+	insert(15,fronthill);
+	scaleObject(fronthill,2.5,2.5);
+	fronthill.screenCenter(FlxAxes.X);
 
 	hind = new FlxSprite(0,20).loadGraphic(Paths.image(prefix+'bgs/newstaged/conall_bgBehind'));
 	hind.scrollFactor.set(0.8,0.8);
